@@ -37,41 +37,19 @@ class Magic:
         return suma_divisores == n
     
     def triangulo_pascal(self, filas):
-        """
-        Genera las primeras n filas del triángulo de Pascal.
-        
-        Args:
-            filas (int): Número de filas a generar
-            
-        Returns:
-            list: Lista de listas que representa el triángulo de Pascal
-        """
-        pass
+        pascal = [[1] * (i + 1) for i in range(filas)]
+        for i in range(2, filas):
+            for j in range(1, i):
+                pascal[i][j] = pascal[i - 1][j - 1] + pascal[i - 1][j]
+        return pascal
     
     def factorial(self, n):
-        """
-        Calcula el factorial de un número.
-        
-        Args:
-            n (int): Número para calcular su factorial
-            
-        Returns:
-            int: El factorial de n
-        """
-        pass
+        return 1 if n == 0 else n * self.factorial(n - 1)
     
     def mcd(self, a, b):
-        """
-        Calcula el máximo común divisor de dos números.
-        
-        Args:
-            a (int): Primer número
-            b (int): Segundo número
-            
-        Returns:
-            int: El máximo común divisor de a y b
-        """
-        pass
+        while b:
+            a, b = b, a % b
+        return a
     
     def mcm(self, a, b):
         """
