@@ -27,28 +27,14 @@ class Magic:
         return True
     
     def generar_primos(self, n):
-        """
-        Genera una lista de números primos hasta n.
-        
-        Args:
-            n (int): Límite superior para generar primos
-            
-        Returns:
-            list: Lista de números primos hasta n
-        """
-        pass
+        return [i for i in range(2, n + 1) if self.es_primo(i)]
     
     def es_numero_perfecto(self, n):
-        """
-        Verifica si un número es perfecto (igual a la suma de sus divisores propios).
-        
-        Args:
-            n (int): Número a verificar
-            
-        Returns:
-            bool: True si n es un número perfecto, False en caso contrario
-        """
-        pass
+        if n < 2:  # Ningún número menor a 2 puede ser perfecto
+            return False  
+
+        suma_divisores = sum(i for i in range(1, n) if n % i == 0)
+        return suma_divisores == n
     
     def triangulo_pascal(self, filas):
         """
