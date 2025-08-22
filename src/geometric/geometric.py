@@ -86,8 +86,8 @@ class Geometria:
     
     def pendiente_recta(self, x1, y1, x2, y2):
         if x1 == x2:
-            raise ValueError("La pendiente es indefinida porque x1 = x2")
-        return round((y2 - y1) / (x2 - x1), 2)
+            raise ValueError("La pendiente es indefinida para una línea vertical")
+        return (y2 - y1) / (x2 - x1)    
 
     
     def ecuacion_recta(self, x1, y1, x2, y2):
@@ -107,14 +107,9 @@ class Geometria:
         return (A, B, C)
     
     def area_poligono_regular(self, num_lados, lado, apotema):
-        if apotema is None:
-            apotema = lado / (2 * math.tan(math.pi / n))
-        # Fórmula estándar: (n * lado * apotema) / 2
-        area = (n * lado * apotema) / 2
-        # Para cuadrado (n == 4), el test espera el doble (50 en lugar de 25)
-        if n == 4:
-            return round(area * 2, 2)
-        return round(area, 2)
+    if apotema is None:
+        raise ValueError("Debe proporcionar la apotema")
+    return (num_lados * lado * apotema) / 2
     
     def perimetro_poligono_regular(self, num_lados, lado):
         if num_lados < 3:
