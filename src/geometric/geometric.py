@@ -100,7 +100,7 @@ class Geometria:
         A = y2 - y1
         B = x1 - x2
         C = (x2 * y1) - (x1 * y2)
-        # Aseguramos que A sea positivo
+        # Aseguramos que A sea positiv
         if A < 0:
             A, B, C = -A, -B, -C
         # NO simplificamos dividiendo por el MCD para cumplir con el test
