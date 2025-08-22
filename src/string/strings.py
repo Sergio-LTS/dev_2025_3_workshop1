@@ -18,53 +18,16 @@ class Strings:
        return sum(1 for c in texto.lower() if c in "aeiou")
     
     def contar_consonantes(self, texto):
-        """
-        Cuenta el número de consonantes en una cadena.
-        
-        Args:
-            texto (str): Cadena para contar consonantes
-            
-        Returns:
-            int: Número de consonantes en la cadena
-        """
-        pass
+        return sum(1 for c in texto.lower() if c.isalpha() and c not in "aeiou")
     
     def es_anagrama(self, texto1, texto2):
-        """
-        Verifica si dos cadenas son anagramas (contienen exactamente los mismos caracteres).
-        
-        Args:
-            texto1 (str): Primera cadena
-            texto2 (str): Segunda cadena
-            
-        Returns:
-            bool: True si son anagramas, False en caso contrario
-        """
-        pass
+        return sorted(texto1.replace(" ", "").lower()) == sorted(texto2.replace(" ", "").lower()
     
     def contar_palabras(self, texto):
-        """
-        Cuenta el número de palabras en una cadena.
-        
-        Args:
-            texto (str): Cadena para contar palabras
-            
-        Returns:
-            int: Número de palabras en la cadena
-        """
-        pass
+       return len(texto.split())
     
     def palabras_mayus(self, texto):
-        """
-        Pon en Mayuscula la primera letra de cada palabra en una cadena.
-        
-        Args:
-            texto (str): Cadena
-            
-        Returns:
-            str: Cadena con la primera letra de cada palabra en mayúscula
-        """
-        pass
+        return " ".join(p.capitalize() for p in texto.split())
     
     def eliminar_espacios_duplicados(self, texto):
         """
