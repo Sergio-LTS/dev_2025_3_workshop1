@@ -80,4 +80,4 @@ class Data:
         filas = len(matriz)
         columnas = len(matriz[0])
         return [[matriz[j][i] for j in range(filas)] for i in range(columnas)]
-        #.
+        #..
