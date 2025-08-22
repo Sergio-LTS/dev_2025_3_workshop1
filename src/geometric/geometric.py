@@ -10,10 +10,17 @@ class Geometria:
     def perimetro_rectangulo(self, base, altura):
         return 2 * (base + altura)
     
+
     def area_circulo(self, radio):
-        return pi * radio ** 2
-    
+        if radio < 0:
+            raise ValueError("radio positivo")
+        pi = 3.141592653589793
+        return pi * (radio ** 2)
+
     def perimetro_circulo(self, radio):
+        pi = 3.141592653589793
+        if radio < 0:
+            raise ValueError("radio positivo")
         return 2 * pi * radio
     
     def area_triangulo(self, base, altura):
@@ -50,25 +57,38 @@ class Geometria:
         return 6 * lado ** 2
     
     def volumen_esfera(self, radio):
+        pi = 3.141592653589793
         return (4/3) * pi * radio ** 3
     
     def area_superficie_esfera(self, radio):
-        return 4 * pi * radio ** 2
+        if radio < 0:
+            raise ValueError("radio positivo")
+        pi= 3.141592653589793
+        return 4 * pi * (radio ** 2)
     
     def volumen_cilindro(self, radio, altura):
-         return pi * radio ** 2 * altura
+        if radio < 0 or altura < 0:
+            raise ValueError("El radio y la altura no negativos")
+        pi = 3.141592653589793
+        return pi * (radio ** 2) * altura
     
     def area_superficie_cilindro(self, radio, altura):
-        return round(2 * math.pi * radio * (radio + altura), 2)
+        if radio < 0 or altura < 0:
+            raise ValueError("El radio y la altura no pueden ser negativos")
+        pi = 3.141592653589793
+        return round(2 * pi * radio * (radio + altura), 2)
     
     def distancia_entre_puntos(self, x1, y1, x2, y2):
-        return round(math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2), 2)
+        return round(((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5, 2)
     
     def punto_medio(self, x1, y1, x2, y2):
         return ((x1 + x2) / 2, (y1 + y2) / 2)
     
     def pendiente_recta(self, x1, y1, x2, y2):
-        return round(2 * math.pi * radio * (radio + altura), 2)
+        if x1 == x2:
+            raise ValueError("La pendiente es indefinida porque x1 = x2")
+        return round((y2 - y1) / (x2 - x1), 2)
+
     
     def ecuacion_recta(self, x1, y1, x2, y2):
         # Casos especiales:
@@ -97,4 +117,8 @@ class Geometria:
         return round(area, 2)
     
     def perimetro_poligono_regular(self, num_lados, lado):
+        if num_lados < 3:
+            raise ValueError("Un polígono regular debe tener al menos 3 lados")
+        if lado <= 0:
+            raise ValueError("La longitud del lado debe ser positiva")
         return num_lados * lado
