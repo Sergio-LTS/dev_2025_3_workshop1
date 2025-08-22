@@ -50,41 +50,13 @@ class Geometria:
         return 6 * lado ** 2
     
     def volumen_esfera(self, radio):
-        """
-        Calcula el volumen de una esfera.
-        
-        Args:
-            radio (float): Radio de la esfera
-            
-        Returns:
-            float: Volumen de la esfera
-        """
-        pass
+        return (4/3) * pi * radio ** 3
     
     def area_superficie_esfera(self, radio):
-        """
-        Calcula el área de la superficie de una esfera.
-        
-        Args:
-            radio (float): Radio de la esfera
-            
-        Returns:
-            float: Área de la superficie de la esfera
-        """
-        pass
+        return 4 * pi * radio ** 2
     
     def volumen_cilindro(self, radio, altura):
-        """
-        Calcula el volumen de un cilindro.
-        
-        Args:
-            radio (float): Radio de la base del cilindro
-            altura (float): Altura del cilindro
-            
-        Returns:
-            float: Volumen del cilindro
-        """
-        pass
+         return pi * radio ** 2 * altura
     
     def area_superficie_cilindro(self, radio, altura):
         """
@@ -130,19 +102,7 @@ class Geometria:
         pass
     
     def pendiente_recta(self, x1, y1, x2, y2):
-        """
-        Calcula la pendiente de una recta que pasa por dos puntos.
-        
-        Args:
-            x1 (float): Coordenada x del primer punto
-            y1 (float): Coordenada y del primer punto
-            x2 (float): Coordenada x del segundo punto
-            y2 (float): Coordenada y del segundo punto
-            
-        Returns:
-            float: Pendiente de la recta
-        """
-        pass
+        return round(2 * math.pi * radio * (radio + altura), 2)
     
     def ecuacion_recta(self, x1, y1, x2, y2):
         """
