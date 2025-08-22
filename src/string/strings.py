@@ -33,16 +33,11 @@ class Strings:
         return " ".join(texto.split())
     
     def es_numero_entero(self, texto):
-        """
-        Verifica si una cadena representa un número entero sin usar isdigit().
-        
-        Args:
-            texto (str): Cadena a verificar
-            
-        Returns:
-            bool: True si la cadena representa un número entero, False en caso contrario
-        """
-        pass
+        if not texto:
+            return False
+        if texto[0] == "-":
+            texto = texto[1:]
+        return all(c in "0123456789" for c in texto)
     
     def cifrar_cesar(self, texto, desplazamiento):
         """
