@@ -11,10 +11,10 @@ class Data:
         return resul
     
     def buscar_elemento(self, lista, elemento):
-         for i in range(len(lista)):
+        for i in range(len(lista)):
             if lista[i] == elemento:
                 return i
-         return -1
+        return -1
     
     def eliminar_duplicados(self, lista):
         resultado = []
@@ -40,7 +40,7 @@ class Data:
         return resultado
     
     def rotar_lista(self, lista, k):
-         if not lista:
+        if not lista:
             return lista
         k = k % len(lista) if len(lista) > 0 else 0
         return lista[-k:] + lista[:-k]
@@ -80,4 +80,3 @@ class Data:
         filas = len(matriz)
         columnas = len(matriz[0])
         return [[matriz[j][i] for j in range(filas)] for i in range(columnas)]
-        #..
