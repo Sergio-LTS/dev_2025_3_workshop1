@@ -1,15 +1,17 @@
 class Games:
-    
     def piedra_papel_tijera(self, jugador1, jugador2):
         reglas = {
             "piedra": "tijera",
             "tijera": "papel",
-            "papel": "piedra"
+            "papel": "piedra",
         }
 
-        if jugador1 == jugador2:
+        j1 = jugador1.strip().lower()
+        j2 = jugador2.strip().lower()
+
+        if j1 == j2:
             return "empate"
-        elif reglas[jugador1] == jugador2:
+        elif reglas[j1] == j2:
             return "jugador1"
         else:
             return "jugador2"
@@ -47,14 +49,16 @@ class Games:
         return "empate"
 
     def generar_combinacion_mastermind(self, longitud, colores_disponibles):
-        # Generar una combinación determinista (sin random)
-        # Ejemplo: repetir los colores en orden hasta completar la longitud
         combinacion = []
         for i in range(longitud):
             combinacion.append(colores_disponibles[i % len(colores_disponibles)])
         return combinacion
 
     def validar_movimiento_torre_ajedrez(self, desde_fila, desde_col, hasta_fila, hasta_col, tablero):
+        # No puede quedarse en la misma casilla
+        if desde_fila == hasta_fila and desde_col == hasta_col:
+            return False
+
         # Movimiento solo en línea recta
         if desde_fila != hasta_fila and desde_col != hasta_col:
             return False
@@ -70,5 +74,25 @@ class Games:
             for f in range(desde_fila + paso, hasta_fila, paso):
                 if tablero[f][desde_col] != " ":
                     return False
+
+        return True
+    def validar_movimiento_alfil_ajedrez(self, desde_fila, desde_col, hasta_fila, hasta_col, tablero):
+        # No puede quedarse en la misma casilla
+        if desde_fila == hasta_fila and desde_col == hasta_col:
+            return False
+
+        # Movimiento solo en diagonal
+        if abs(desde_fila - hasta_fila) != abs(desde_col - hasta_col):
+            return False
+
+        # Revisar obstáculos en el camino
+        paso_fila = 1 if hasta_fila > desde_fila else -1
+        paso_col = 1 if hasta_col > desde_col else -1
+        f, c = desde_fila + paso_fila, desde_col + paso_col
+        while f != hasta_fila and c != hasta_col:
+            if tablero[f][c] != " ":
+                return False
+            f += paso_fila
+            c += paso_col
 
         return True
