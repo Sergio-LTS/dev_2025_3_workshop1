@@ -21,7 +21,7 @@ class Strings:
         return sum(1 for c in texto.lower() if c.isalpha() and c not in "aeiou")
     
     def es_anagrama(self, texto1, texto2):
-        return sorted(texto1.replace(" ", "").lower()) == sorted(texto2.replace(" ", "").lower()
+        return sorted(texto1.replace(" ", "").lower()) == sorted(texto2.replace(" ", "").lower())
     
     def contar_palabras(self, texto):
        return len(texto.split())
