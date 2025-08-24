@@ -39,36 +39,32 @@ class Games:
     
 
     def ta_te_ti_ganador(self, tablero):
-        """
-        Verifica el estado del juego tic-tac-toe.
-        """
-        # Revisar filas y columnas
-        for i in range(3):
-            if tablero[i][0] == tablero[i][1] == tablero[i][2] and tablero[i][0] != " ":
-                # Si aún hay espacios, juego sigue
-                if any(" " in fila for fila in tablero):
-                    return "continua"
-                return tablero[i][0]
-            if tablero[0][i] == tablero[1][i] == tablero[2][i] and tablero[0][i] != " ":
-                if any(" " in fila for fila in tablero):
-                    return "continua"
-                return tablero[0][i]
-        
+        # Revisar filas
+        for fila in tablero:
+            if fila[0] != " " and fila[0] == fila[1] == fila[2]:
+                return fila[0]
+
+        # Revisar columnas
+        for col in range(3):
+            if tablero[0][col] != " " and tablero[0][col] == tablero[1][col] == tablero[2][col]:
+                return tablero[0][col]
+
         # Revisar diagonales
-        if tablero[0][0] == tablero[1][1] == tablero[2][2] and tablero[0][0] != " ":
-            if any(" " in fila for fila in tablero):
-                return "continua"
-            return tablero[0][0]
-        if tablero[0][2] == tablero[1][1] == tablero[2][0] and tablero[0][2] != " ":
-            if any(" " in fila for fila in tablero):
-                return "continua"
-            return tablero[0][2]
-        
-        # Revisar si hay espacios vacíos
+        if tablero[0][0] != " " and tablero[0][0] == tablero[1][1] == tablero[2][2]:
+            # Solo es victoria si NO hay espacios vacíos en el tablero
+            if all(" " not in fila for fila in tablero):
+                return tablero[0][0]
+
+        if tablero[0][2] != " " and tablero[0][2] == tablero[1][1] == tablero[2][0]:
+            if all(" " not in fila for fila in tablero):
+                return tablero[0][2]
+
+        # Si aún hay espacios vacíos → continua
         for fila in tablero:
             if " " in fila:
                 return "continua"
-        
+
+        # Si no hay espacios y nadie ganó → empate
         return "empate"
     
 
