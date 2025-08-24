@@ -63,17 +63,18 @@ class Conversion:
         return " ".join(morse_dict[letra] for letra in texto if letra in morse_dict)
     
     def morse_a_texto(self, morse):
-        """
-        Convierte código Morse a texto.
-        
-        Args:
-            morse (str): Código Morse separado por espacios
-            
-        Returns:
-            str: Texto decodificado
-            
-        Ejemplo:
-            morse_a_texto("... --- ...") -> "SOS"
-            morse_a_texto(".... . .-.. .-.. ---") -> "HELLO"
-        """
-        pass
+
+        morse_dict = {
+            'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..',
+            'E': '.', 'F': '..-.', 'G': '--.', 'H': '....',
+            'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
+            'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
+            'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-',
+            'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+            'Y': '-.--', 'Z': '--..',
+            '0': '-----', '1': '.----', '2': '..---', '3': '...--',
+            '4': '....-', '5': '.....', '6': '-....', '7': '--...',
+            '8': '---..', '9': '----.'
+        }
+        inv_morse = {v: k for k, v in morse_dict.items()}
+        return "".join(inv_morse[codigo] for codigo in morse.split() if codigo in inv_morse)
