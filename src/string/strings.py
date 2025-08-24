@@ -1,9 +1,5 @@
 class Strings:
-    """
-    Clase con métodos para manipulación y operaciones con cadenas de texto.
-    Incluye funciones para manipular, validar y transformar strings.
-    """
-    
+
     def es_palindromo(self, texto):
         texto = texto.lower().replace(" ", "")
         return texto == texto[::-1]
@@ -15,7 +11,7 @@ class Strings:
         return resultado
     
     def contar_vocales(self, texto):
-       return sum(1 for c in texto.lower() if c in "aeiou")
+        return sum(1 for c in texto.lower() if c in "aeiou")
     
     def contar_consonantes(self, texto):
         return sum(1 for c in texto.lower() if c.isalpha() and c not in "aeiou")
@@ -24,20 +20,36 @@ class Strings:
         return sorted(texto1.replace(" ", "").lower()) == sorted(texto2.replace(" ", "").lower())
     
     def contar_palabras(self, texto):
-       return len(texto.split())
+        return len(texto.split())
     
+    #def palabras_mayus(self, texto):
     def palabras_mayus(self, texto):
-        return " ".join(p.capitalize() for p in texto.split())
-    
+        resultado = []
+        for palabra in texto.split(" "):
+            if palabra:
+                resultado.append(palabra[0].upper() + palabra[1:])
+            else:
+                resultado.append("")
+        return " ".join(resultado)
+       # return "   ".join(p.capitalize() for p in texto.split())
+
+
     def eliminar_espacios_duplicados(self, texto):
-        return " ".join(texto.split())
+        resultado = []
+        anterior = ""
+        for c in texto:
+            if c == " " and anterior == " ":
+                continue
+            resultado.append(c)
+            anterior = c
+        return "".join(resultado)
     
     def es_numero_entero(self, texto):
         if not texto:
             return False
-        if texto[0] == "-":
+        if texto[0] in "+-":
             texto = texto[1:]
-        return all(c in "0123456789" for c in texto)
+        return texto.isdigit()
     
     def cifrar_cesar(self, texto, desplazamiento):
         resultado = ""
@@ -53,6 +65,8 @@ class Strings:
         return self.cifrar_cesar(texto, -desplazamiento)
     
     def encontrar_subcadena(self, texto, subcadena):
+        if subcadena == "":
+            return []
         posiciones = []
         for i in range(len(texto) - len(subcadena) + 1):
             if texto[i:i + len(subcadena)] == subcadena:
