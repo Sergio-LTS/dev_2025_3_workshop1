@@ -51,16 +51,7 @@ class Stats:
         return suma_cuadrados / len(numeros)
     
     def rango(self, numeros):
-        """
-        Calcula el rango (diferencia entre el valor máximo y mínimo).
-        
-        Args:
-            numeros (list): Lista de números
-            
-        Returns:
-            number: La diferencia entre max y min
-            
-        Ejemplo:
-            rango([1, 5, 3, 9, 2]) -> 8
-        """
-        pass
+
+        if not numeros:
+            return 0
+        return max(numeros) - min(numeros)
