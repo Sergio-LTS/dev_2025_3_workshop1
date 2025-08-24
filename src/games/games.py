@@ -2,10 +2,7 @@ import random
 
 class Games:
     def piedra_papel_tijera(self, jugador1, jugador2):
-        """
-        Determina el ganador del juego piedra, papel o tijera.
-        Retorna "jugador1", "jugador2", "empate" o "invalid".
-        """
+
         # Normalizar entradas
         jugador1 = jugador1.lower()
         jugador2 = jugador2.lower()
@@ -73,9 +70,7 @@ class Games:
     
 
     def validar_movimiento_torre_ajedrez(self, desde_fila, desde_col, hasta_fila, hasta_col, tablero):
-        """
-        Valida si un movimiento de torre en ajedrez es legal.
-        """
+        
         # Validar límites del tablero
         if not (0 <= desde_fila < 8 and 0 <= desde_col < 8 and 
                 0 <= hasta_fila < 8 and 0 <= hasta_col < 8):
